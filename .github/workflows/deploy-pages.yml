@@ -50,6 +50,8 @@ jobs:
           VITE_API_URL: ${{ vars.VITE_API_URL }}
           VITE_PUBLICACIONES_API_URL: ${{ vars.VITE_PUBLICACIONES_API_URL }}
           VITE_FAVORITOS_API_URL: ${{ vars.VITE_FAVORITOS_API_URL || vars.VITE_API_URL }}
+          VITE_LOGIN_API_URL: ${{ vars.VITE_API_URL }}
+          VITE_USUARIOS_API_URL: ${{ vars.VITE_API_URL }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
