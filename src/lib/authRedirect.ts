@@ -27,3 +27,6 @@ export const getLoginReturnPath = (state: unknown): string | null => {
 
   return getSafeReturnPath(state.from);
 };
+
+export const getAppRouteUrl = (route: string, origin: string, baseUrl: string): string =>
+  new URL(route.replace(/^\/+/, ''), new URL(baseUrl, origin)).toString();

@@ -1,5 +1,6 @@
 import { ApiError, request } from '../lib/api';
 import { isDemoMode, supabase } from '../lib/supabase';
+import { getAppRouteUrl } from '../lib/authRedirect';
 import { Role, User } from '../types';
 
 export interface LoginProfile extends User {
@@ -122,7 +123,7 @@ export async function signUp(
 
 export async function sendPasswordReset(email: string): Promise<void> {
 	const { error } = await supabase.auth.resetPasswordForEmail(email, {
-		redirectTo: `${window.location.origin}/reset-password`,
+		redirectTo: getAppRouteUrl('reset-password', window.location.origin, import.meta.env.BASE_URL),
 	});
 	if (error) throw error;
 }

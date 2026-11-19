@@ -94,7 +94,8 @@ El enlace de recuperación redirige al origen donde se solicitó, a la ruta
 en **Authentication → URL Configuration → Redirect URLs**; por ejemplo:
 
 - `http://localhost:3000/reset-password` para desarrollo local.
-- `https://<tu-dominio>/reset-password` para producción.
+- `https://<usuario>.github.io/App-Read-Now/reset-password` para GitHub Pages.
+- `https://<tu-dominio>/reset-password` para producción en un dominio propio.
 - `https://*-3000.app.github.dev/reset-password` para Codespaces.
 
 Supabase solo permite redirigir a URLs incluidas en esa lista. La nueva contraseña se

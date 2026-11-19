@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { supabase, isDemoMode } from '../lib/supabase';
 import { getAuthenticatedProfile } from '../microservicios/Login';
+import { getAppRouteUrl } from '../lib/authRedirect';
 import { User, Role } from '../types';
 
 interface AuthContextType {
@@ -55,8 +56,11 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }
             void fetchUserData(session.user.id, session.user.email || '');
           }, 0);
         } else if (event === 'PASSWORD_RECOVERY') {
-          if (window.location.pathname !== '/reset-password') {
-            window.location.href = '/reset-password';
+          const resetPasswordUrl = new URL(
+            getAppRouteUrl('reset-password', window.location.origin, import.meta.env.BASE_URL),
+          );
+          if (window.location.pathname !== resetPasswordUrl.pathname) {
+            window.location.href = resetPasswordUrl.toString();
           }
         } else if (event === 'SIGNED_OUT') {
           setUser(null);
