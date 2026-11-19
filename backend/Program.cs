@@ -65,7 +65,8 @@ builder.Services.AddCors(options =>
             Uri.TryCreate(origin, UriKind.Absolute, out var uri) &&
             (uri.IsLoopback ||
              uri.Host.EndsWith(".app.github.dev", StringComparison.OrdinalIgnoreCase) ||
-             uri.Host.Equals("juan0diaz.github.io", StringComparison.OrdinalIgnoreCase)))
+             uri.Host.Equals("juan0diaz.github.io", StringComparison.OrdinalIgnoreCase) ||
+             uri.Host.Equals("vm1940.github.io", StringComparison.OrdinalIgnoreCase)))
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
